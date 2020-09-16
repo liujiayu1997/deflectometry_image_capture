@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Camera" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QBBCAAAAAAEBACAAQAAEAAAAARAAFQKCCAAAGACAAAw=</HashCode>
+      <FileName>Camera.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DahengCamera" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ADBAACAQEAEAEKQABAAEAAAAARIAFQLCCIACGACAQAg=</HashCode>
+      <FileName>DahengCamera.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="deflectometry_image_capture" Collapsed="true">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAABSAAAAAAAAABAAAAAAAAJAAAA=</HashCode>
+      <FileName>deflectometry_image_capture.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>

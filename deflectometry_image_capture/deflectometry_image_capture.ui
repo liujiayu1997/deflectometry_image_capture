@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>deflectometry_image_captureClass</class>
+ <widget class="QMainWindow" name="deflectometry_image_captureClass">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>2400</width>
+    <height>1800</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>deflectometry_image_capture</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>1930</x>
+      <y>90</y>
+      <width>391</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>设置图像存储路径</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_2">
+       <property name="text">
+        <string>相机初始化</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="Line" name="line">
+    <property name="geometry">
+     <rect>
+      <x>1860</x>
+      <y>80</y>
+      <width>20</width>
+      <height>1781</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>1930</x>
+      <y>40</y>
+      <width>171</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;操作区&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>1930</x>
+      <y>210</y>
+      <width>231</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;相机选取&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>1927</x>
+      <y>270</y>
+      <width>391</width>
+      <height>171</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <widget class="QComboBox" name="comboBox"/>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_7">
+       <property name="text">
+        <string>显示图片</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_3">
+       <property name="text">
+        <string>关闭相机</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget_3">
+    <property name="geometry">
+     <rect>
+      <x>1930</x>
+      <y>600</y>
+      <width>391</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_3">
+     <item>
+      <widget class="QPushButton" name="pushButton_5">
+       <property name="text">
+        <string>显示测试条纹</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_6">
+       <property name="text">
+        <string>开始采集图像</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget_4">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>60</y>
+      <width>1051</width>
+      <height>1581</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_4">
+     <item>
+      <widget class="HighGraphicsView" name="graphicsView">
+       <property name="minimumSize">
+        <size>
+         <width>1049</width>
+         <height>0</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="HighGraphicsView" name="graphicsView_2"/>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>2400</width>
+     <height>37</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>HighGraphicsView</class>
+   <extends>QGraphicsView</extends>
+   <header>HighGraphicsView.h</header>
+   <slots>
+    <signal>mousePositionChanged(int,int)</signal>
+    <signal>wheelScrollChanged(int)</signal>
+    <slot>onMousePositionChanged(int,int)</slot>
+    <slot>onWheelScrollChanged(int)</slot>
+   </slots>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="deflectometry_image_capture.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>deflectometry_image_captureClass</receiver>
+   <slot>set_image_path()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1931</x>
+     <y>183</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1158</x>
+     <y>184</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>deflectometry_image_captureClass</receiver>
+   <slot>camera_init()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1931</x>
+     <y>255</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1088</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_3</sender>
+   <signal>clicked()</signal>
+   <receiver>deflectometry_image_captureClass</receiver>
+   <slot>close_camera()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1929</x>
+     <y>490</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1006</x>
+     <y>446</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_5</sender>
+   <signal>clicked()</signal>
+   <receiver>deflectometry_image_captureClass</receiver>
+   <slot>show_fringer()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1932</x>
+     <y>710</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1001</x>
+     <y>558</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_6</sender>
+   <signal>clicked()</signal>
+   <receiver>deflectometry_image_captureClass</receiver>
+   <slot>gather_image()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1932</x>
+     <y>773</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1042</x>
+     <y>694</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>graphicsView</sender>
+   <signal>mousePositionChanged(int,int)</signal>
+   <receiver>graphicsView</receiver>
+   <slot>onMousePositionChanged(int,int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>910</x>
+     <y>776</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1047</x>
+     <y>825</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>graphicsView</sender>
+   <signal>wheelScrollChanged(int)</signal>
+   <receiver>graphicsView</receiver>
+   <slot>onWheelScrollChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1073</x>
+     <y>862</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1092</x>
+     <y>872</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>graphicsView_2</sender>
+   <signal>mousePositionChanged(int,int)</signal>
+   <receiver>graphicsView_2</receiver>
+   <slot>onMousePositionChanged(int,int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1054</x>
+     <y>1068</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>963</x>
+     <y>1215</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>graphicsView_2</sender>
+   <signal>wheelScrollChanged(int)</signal>
+   <receiver>graphicsView_2</receiver>
+   <slot>onWheelScrollChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1061</x>
+     <y>1316</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1035</x>
+     <y>1414</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_7</sender>
+   <signal>clicked()</signal>
+   <receiver>deflectometry_image_captureClass</receiver>
+   <slot>show_picture()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>2038</x>
+     <y>406</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1574</x>
+     <y>487</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>set_image_path()</slot>
+  <slot>show_picture()</slot>
+  <slot>camera_init()</slot>
+  <slot>close_camera()</slot>
+  <slot>show_fringer()</slot>
+  <slot>gather_image()</slot>
+  <slot>onMousePositionChanged(int,int)</slot>
+  <slot>onWheelScrollChanged(int)</slot>
+  <slot>one_camera_init()</slot>
+ </slots>
+</ui>
