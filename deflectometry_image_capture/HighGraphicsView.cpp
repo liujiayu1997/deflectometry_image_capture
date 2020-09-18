@@ -23,18 +23,24 @@ void HighGraphicsView::getImage(QImage& image)
 void HighGraphicsView::setImage()
 {
 	void* data = nullptr;
-	m_camera->emitTriggerSoftware();
     //m_camera->capture(data);
-
-	bool test = !m_camera->getCallbackData(data, 100);
-		
-	//cv::Mat test_image(im_height, im_width, CV_8UC3, data);
-	QImage image(static_cast<uchar*>(data), im_width, im_height, QImage::Format_RGB888);
-	this->image = image.rgbSwapped();
-	current_width = this->width() - 10;
-	current_height = int(double(im_height) / double(im_width) * double(current_width));
-	scene->addPixmap(QPixmap::fromImage(this->image.scaled(current_width,current_height)));
-	this->setScene(scene);
+	mutex.lock();
+	while (true)
+	{
+		m_camera->emitTriggerSoftware();
+		while (true) {
+			if (m_camera->getCallbackData(data, 100))
+				break;
+		}
+		//cv::Mat test_image(im_height, im_width, CV_8UC3, data);
+		QImage image(static_cast<uchar*>(data), im_width, im_height, QImage::Format_RGB888);
+		this->image = image.rgbSwapped();
+		current_width = this->width() - 10;
+		current_height = int(double(im_height) / double(im_width) * double(current_width));
+		scene->addPixmap(QPixmap::fromImage(this->image.scaled(current_width, current_height)));
+		this->setScene(scene);
+	}
+	mutex.unlock();
 }
 
 bool HighGraphicsView::initCamera()
@@ -108,8 +114,8 @@ void HighGraphicsView::mouseMoveEvent(QMouseEvent* event)
 {
 	QGraphicsView::mouseMoveEvent(event);
 
-	x = event->x();
-	y = event->y();
+	int x = event->x();
+	int y = event->y();
 
 	emit mousePositionChanged(x, y);
 }

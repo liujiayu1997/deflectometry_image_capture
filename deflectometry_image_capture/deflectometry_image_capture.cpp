@@ -35,6 +35,8 @@ void deflectometry_image_capture::camera_init()
 		else
 		{
 			QMessageBox::information(this, tr("相机初始化"), tr("相机初始化成功"));
+			ui.graphicsView->moveToThread(&graphics1_thread);
+			ui.graphicsView_2->moveToThread(&graphics2_thread);
 		}
 	}
 		

@@ -1,3 +1,4 @@
+
 #pragma once
 
 #include <QtWidgets/QMainWindow>
@@ -8,6 +9,7 @@
 #include <DahengCamera.h>
 #include "HighGraphicsView.h"
 #include <string>
+#include <Qthread>
 
 #if defined(_MSC_VER) && (_MSC_VER >= 1600)    
 # pragma execution_character_set("utf-8")    
@@ -23,6 +25,8 @@ public:
 private:
     Ui::deflectometry_image_captureClass ui;
     QString image_path;
+    QThread graphics1_thread;
+    QThread graphics2_thread;
 
 
 public slots:

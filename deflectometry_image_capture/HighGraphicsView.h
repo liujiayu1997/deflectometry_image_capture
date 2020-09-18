@@ -6,6 +6,7 @@
 #include <memory>
 #include <QScrollBar>
 #include "DahengCamera.h"
+#include <QMutex>
 
 class HighGraphicsView :
 	public QGraphicsView
@@ -41,4 +42,5 @@ private:
 	QImage image;
 	QGraphicsScene* scene = new QGraphicsScene;
 	std::shared_ptr<Camera> m_camera;
+	QMutex mutex;
 };
