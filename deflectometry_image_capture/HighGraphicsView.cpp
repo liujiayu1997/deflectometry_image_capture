@@ -1,5 +1,4 @@
 #include "HighGraphicsView.h"
-#include <QMessageBox>
 #include "opencv2/core/mat.hpp"
 #include "opencv2/highgui.hpp"
 #include "opencv2/imgcodecs.hpp"
@@ -20,43 +19,23 @@ void HighGraphicsView::getImage(QImage& image)
 	image = this->image;
 }
 
-void HighGraphicsView::setImage()
+void HighGraphicsView::setImage(void *data)
 {
-	void* data = nullptr;
-    //m_camera->capture(data);
-	mutex.lock();
-	while (true)
-	{
-		m_camera->emitTriggerSoftware();
-		while (true) {
-			if (m_camera->getCallbackData(data, 100))
-				break;
-		}
-		//cv::Mat test_image(im_height, im_width, CV_8UC3, data);
-		QImage image(static_cast<uchar*>(data), im_width, im_height, QImage::Format_RGB888);
-		this->image = image.rgbSwapped();
-		current_width = this->width() - 10;
-		current_height = int(double(im_height) / double(im_width) * double(current_width));
-		scene->addPixmap(QPixmap::fromImage(this->image.scaled(current_width, current_height)));
-		this->setScene(scene);
-	}
-	mutex.unlock();
+	//cv::Mat test_image(im_height, im_width, CV_8UC3, data);
+	QImage image(static_cast<uchar*>(data), im_width, im_height, QImage::Format_RGB888);
+    this->image = image.rgbSwapped();
+	current_width = this->width() - 10;
+	current_height = int(double(im_height) / double(im_width) * double(current_width));
+	scene->addPixmap(QPixmap::fromImage(this->image.scaled(current_width, current_height)));
+	this->setScene(scene);
+	qDebug() << "Graphics thread" << QThread::currentThread();
 }
 
-bool HighGraphicsView::initCamera()
+void HighGraphicsView::setImageSize(int width, int height)
 {
-	m_camera = std::make_shared<DahengCamera>();
-	if (!m_camera->init())
-		return false;
-	else
-	{
-		this->setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
-		m_camera->getPictureResolution(im_width,im_height);
-		m_camera->startCaptureCallback();
-		return true;
-	}
+	this->im_height = height;
+	this->im_width = width;
 }
-
 void HighGraphicsView::onWheelScrollChanged(int step)
 {
 	current_width += current_width / 20 * step;

@@ -140,22 +140,15 @@
    <widget class="QWidget" name="verticalLayoutWidget_4">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>60</y>
-      <width>1051</width>
-      <height>1581</height>
+      <x>100</x>
+      <y>50</y>
+      <width>1141</width>
+      <height>1641</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_4">
      <item>
-      <widget class="HighGraphicsView" name="graphicsView">
-       <property name="minimumSize">
-        <size>
-         <width>1049</width>
-         <height>0</height>
-        </size>
-       </property>
-      </widget>
+      <widget class="HighGraphicsView" name="graphicsView"/>
      </item>
      <item>
       <widget class="HighGraphicsView" name="graphicsView_2"/>
@@ -189,12 +182,6 @@
    <class>HighGraphicsView</class>
    <extends>QGraphicsView</extends>
    <header>HighGraphicsView.h</header>
-   <slots>
-    <signal>mousePositionChanged(int,int)</signal>
-    <signal>wheelScrollChanged(int)</signal>
-    <slot>onMousePositionChanged(int,int)</slot>
-    <slot>onWheelScrollChanged(int)</slot>
-   </slots>
   </customwidget>
  </customwidgets>
  <resources>
@@ -278,70 +265,6 @@
     <hint type="destinationlabel">
      <x>1042</x>
      <y>694</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>graphicsView</sender>
-   <signal>mousePositionChanged(int,int)</signal>
-   <receiver>graphicsView</receiver>
-   <slot>onMousePositionChanged(int,int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>910</x>
-     <y>776</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1047</x>
-     <y>825</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>graphicsView</sender>
-   <signal>wheelScrollChanged(int)</signal>
-   <receiver>graphicsView</receiver>
-   <slot>onWheelScrollChanged(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1073</x>
-     <y>862</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1092</x>
-     <y>872</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>graphicsView_2</sender>
-   <signal>mousePositionChanged(int,int)</signal>
-   <receiver>graphicsView_2</receiver>
-   <slot>onMousePositionChanged(int,int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1054</x>
-     <y>1068</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>963</x>
-     <y>1215</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>graphicsView_2</sender>
-   <signal>wheelScrollChanged(int)</signal>
-   <receiver>graphicsView_2</receiver>
-   <slot>onWheelScrollChanged(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1061</x>
-     <y>1316</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1035</x>
-     <y>1414</y>
     </hint>
    </hints>
   </connection>

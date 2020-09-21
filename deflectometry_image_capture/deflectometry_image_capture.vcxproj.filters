@@ -50,6 +50,9 @@
     <ClCompile Include="X64\DEBUG\MOC\MOC_HIGHGRAPHICSVIEW.CPP">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="captureThread.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h">
@@ -61,9 +64,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+    <None Include="cpp.hint" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="HighGraphicsView.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="captureThread.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

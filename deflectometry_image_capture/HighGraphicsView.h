@@ -7,6 +7,10 @@
 #include <QScrollBar>
 #include "DahengCamera.h"
 #include <QMutex>
+#include <QMessageBox>
+#include <Qthread>
+#include <Qdebug>
+#include <QtConcurrent>
 
 class HighGraphicsView :
 	public QGraphicsView
@@ -17,8 +21,6 @@ public:
 	HighGraphicsView(QWidget* parent = nullptr);
 	~HighGraphicsView();
 	void getImage(QImage& image); 
-	void setImage();
-	bool initCamera();
 
 signals:
 	void mousePositionChanged(int x, int y);
@@ -26,7 +28,8 @@ signals:
 public slots:
 	void onMousePositionChanged(int x, int y);
 	void onWheelScrollChanged(int step);
-
+	void setImage(void* data);
+	void setImageSize(int width, int height);
 
 protected:
 	void wheelEvent(QWheelEvent* event);
@@ -41,6 +44,5 @@ private:
 	// image scene
 	QImage image;
 	QGraphicsScene* scene = new QGraphicsScene;
-	std::shared_ptr<Camera> m_camera;
 	QMutex mutex;
 };

@@ -43,7 +43,7 @@
     <Import Project="$(QtMsBuild)\qt_defaults.props" />
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <IncludePath>C:\Program Files\Daheng Imaging\GalaxySDK\Samples\C++ SDK\inc;C:\library\opencv\build\include;C:\library\opencv\build\include\opencv;C:\library\opencv\build\include\opencv2;C:\Users\Jiayu_Liu\source\repos\deflectometry_image_capture\deflectometry_image_capture;C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Program Files\Daheng Imaging\GalaxySDK\Samples\C++ SDK\inc;C:\library\opencv\build\include;C:\library\opencv\build\include\opencv;C:\library\opencv\build\include\opencv2;C:\Users\Jiayu_Liu\source\repos\deflectometry_image_capture\deflectometry_image_capture;C:\Qt\Qt5.12.9\5.12.9\msvc2017_64\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Program Files\Daheng Imaging\GalaxySDK\Samples\C++ SDK\lib\x64;C:\library\opencv\build\x86\vc12\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
@@ -60,8 +60,8 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
-    <QtInstall>QT 2019</QtInstall>
-    <QtModules>core;gui;widgets</QtModules>
+    <QtInstall>Qt 5.12</QtInstall>
+    <QtModules>concurrent;core;gui;widgets</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
@@ -99,6 +99,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="captureThread.cpp" />
     <ClCompile Include="X64\DEBUG\MOC\MOC_HIGHGRAPHICSVIEW.CPP" />
     <QtRcc Include="deflectometry_image_capture.qrc" />
     <QtUic Include="deflectometry_image_capture.ui" />
@@ -110,11 +111,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
+    <QtMoc Include="captureThread.h" />
     <ClInclude Include="DahengCamera.h" />
     <QtMoc Include="HighGraphicsView.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+    <None Include="cpp.hint" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

@@ -8,8 +8,12 @@
 #include <memory>
 #include <DahengCamera.h>
 #include "HighGraphicsView.h"
+#include "captureThread.h"
 #include <string>
 #include <Qthread>
+#include <QtConcurrent>
+#include <QtCore>
+
 
 #if defined(_MSC_VER) && (_MSC_VER >= 1600)    
 # pragma execution_character_set("utf-8")    
@@ -21,12 +25,13 @@ class deflectometry_image_capture : public QMainWindow
 
 public:
     deflectometry_image_capture(QWidget *parent = Q_NULLPTR);
+    ~deflectometry_image_capture();
 
 private:
     Ui::deflectometry_image_captureClass ui;
     QString image_path;
-    QThread graphics1_thread;
-    QThread graphics2_thread;
+    captureThread* m_camera;
+    QThread m_thread;
 
 
 public slots:
@@ -36,4 +41,9 @@ public slots:
     void close_camera();
     void show_fringer();
     void gather_image();
+signals:
+    void capture_image();
+    void stop_capture_image();
+    void start_save_image();
+    void camera_init_signal();
 };

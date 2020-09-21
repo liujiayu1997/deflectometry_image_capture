@@ -273,6 +273,8 @@ public:
 #ifdef __debug__
 			cout << "得到图像结果并返回" << endl;
 #endif
+			dataProm = promise<void*>();
+			dataFut = dataProm.get_future();
 			unique_lock<mutex> lk(m_stateMutex);
 			setState(State::NonBlocking);
 			m_stateCv.notify_all();
