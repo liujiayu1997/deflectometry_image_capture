@@ -11,6 +11,7 @@
 #include "captureThread.h"
 #include <string>
 #include <Qthread>
+#include <QTimer>
 #include <QtConcurrent>
 #include <QtCore>
 
@@ -30,8 +31,11 @@ public:
 private:
     Ui::deflectometry_image_captureClass ui;
     QString image_path;
-    captureThread* m_camera;
-    QThread m_thread;
+    captureThread* m_camera_one;
+    QThread m_thread_one;
+    captureThread* m_camera_two;
+    QThread m_thread_two;
+    QTimer* m_timer;
 
 
 public slots:
@@ -42,8 +46,8 @@ public slots:
     void show_fringer();
     void gather_image();
 signals:
-    void capture_image();
-    void stop_capture_image();
+    //void capture_image();
+    //void stop_capture_image();
     void start_save_image();
     void camera_init_signal();
 };

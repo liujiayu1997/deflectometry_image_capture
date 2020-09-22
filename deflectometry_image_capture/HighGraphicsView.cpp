@@ -19,6 +19,7 @@ void HighGraphicsView::getImage(QImage& image)
 	image = this->image;
 }
 
+// ÔÚGraphicsViewÉÏÏÔÊ¾Í¼Æ¬
 void HighGraphicsView::setImage(void *data)
 {
 	//cv::Mat test_image(im_height, im_width, CV_8UC3, data);

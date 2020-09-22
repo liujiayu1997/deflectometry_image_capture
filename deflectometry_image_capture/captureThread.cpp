@@ -15,14 +15,15 @@ void captureThread::camera_init()
 }
 
 void captureThread::image_capture() {
-	void* data = nullptr;
-	m_camera->emitTriggerSoftware();
-	while (true)
-	{
-		if (m_camera->getCallbackData(data, 100))
-			break;
-	}
-	qDebug() << "Image capture thread" << QThread::currentThread();
-	emit image(data);
+
+		void* data = nullptr;
+		m_camera->emitTriggerSoftware();
+		while (true)
+		{
+			if (m_camera->getCallbackData(data, 100))
+				break;
+		}
+		qDebug() << "Image capture thread" << QThread::currentThread();
+		emit image(data);
 }
 
