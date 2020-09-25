@@ -532,6 +532,10 @@ public:
 		}
 	}
 
+	int getCameraIndex() {
+		return m_index;
+	}
+
 	//bool importConfigFile(string filePathToName = "camera/default"){
 	//	try{
 	//		for (uint32_t i = 0; i < m_dvector.size(); i++)

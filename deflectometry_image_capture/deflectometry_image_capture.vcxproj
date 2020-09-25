@@ -43,14 +43,14 @@
     <Import Project="$(QtMsBuild)\qt_defaults.props" />
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <IncludePath>C:\Program Files\Daheng Imaging\GalaxySDK\Samples\C++ SDK\inc;C:\library\opencv\build\include;C:\library\opencv\build\include\opencv;C:\library\opencv\build\include\opencv2;C:\Users\Jiayu_Liu\source\repos\deflectometry_image_capture\deflectometry_image_capture;C:\Qt\Qt5.12.9\5.12.9\msvc2017_64\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Program Files\Daheng Imaging\GalaxySDK\Samples\C++ SDK\lib\x64;C:\library\opencv\build\x86\vc12\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Program Files\Daheng Imaging\GalaxySDK\Samples\C++ SDK\inc;E:\library\opencv\build\include;E:\library\opencv\build\include\opencv2;C:\Users\Jiayu_Liu\source\repos\deflectometry_image_capture\deflectometry_image_capture;C:\Qt\Qt5.12.9\5.12.9\msvc2017_64\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files\Daheng Imaging\GalaxySDK\Samples\C++ SDK\lib\x64;E:\library\opencv\build\x64\vc15\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Link>
-      <AdditionalDependencies>GxIAPICPPEx.lib;opencv_ts300d.lib;opencv_world300d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>GxIAPICPPEx.lib;opencv_world440d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <ClCompile>
       <BrowseInformation>true</BrowseInformation>
@@ -100,8 +100,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="captureThread.cpp" />
+    <ClCompile Include="fringe.cpp" />
     <ClCompile Include="X64\DEBUG\MOC\MOC_HIGHGRAPHICSVIEW.CPP" />
-    <QtRcc Include="deflectometry_image_capture.qrc" />
     <QtUic Include="deflectometry_image_capture.ui" />
     <QtMoc Include="deflectometry_image_capture.h" />
     <ClCompile Include="DahengCamera.cpp" />
@@ -111,6 +111,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="fringe.h" />
+    <ClInclude Include="FringeSequence.h" />
+    <ClInclude Include="projector.h" />
     <QtMoc Include="captureThread.h" />
     <ClInclude Include="DahengCamera.h" />
     <QtMoc Include="HighGraphicsView.h" />

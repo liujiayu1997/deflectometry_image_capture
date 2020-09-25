@@ -1,10 +1,11 @@
-
 #pragma once
 
 #include <QtWidgets/QMainWindow>
 #include "ui_deflectometry_image_capture.h"
 #include <QMessageBox>
 #include <QFileDialog>
+#include "projector.h"
+#include "fringe.h"
 #include <memory>
 #include <DahengCamera.h>
 #include "HighGraphicsView.h"
@@ -14,7 +15,6 @@
 #include <QTimer>
 #include <QtConcurrent>
 #include <QtCore>
-
 
 #if defined(_MSC_VER) && (_MSC_VER >= 1600)    
 # pragma execution_character_set("utf-8")    
@@ -36,7 +36,11 @@ private:
     captureThread* m_camera_two;
     QThread m_thread_two;
     QTimer* m_timer;
-
+    Projector m_projector;
+    std::vector<int> fringe_sequence;
+    std::vector<std::shared_ptr<FringeSequence>> display_fringe;
+    int fringe_width;	//ÌõÎÆµÄ³ß´ç
+    int fringe_height;
 
 public slots:
     void set_image_path();
@@ -45,6 +49,7 @@ public slots:
     void close_camera();
     void show_fringer();
     void gather_image();
+    void projector_init();
 signals:
     //void capture_image();
     //void stop_capture_image();

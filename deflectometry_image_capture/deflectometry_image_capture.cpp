@@ -88,9 +88,23 @@ void deflectometry_image_capture::close_camera()
 
 void deflectometry_image_capture::show_fringer()
 {
+	int fringe_num = ui.comboBox_2->currentText().toInt();
+	std::shared_ptr<Fringe> test_fringe(new Fringe(fringe_width, fringe_height, fringe_num, 0));
+	test_fringe->generate();
+	m_projector.displayFringe(test_fringe);
 }
 
 void deflectometry_image_capture::gather_image()
 {
 
+}
+
+void deflectometry_image_capture::projector_init()
+{
+	if (!m_projector.init())
+		QMessageBox::critical(this, tr("投影仪初始化"), tr("没有找到投影仪"));
+	else
+	{
+		m_projector.getProjectorResolution(fringe_width, fringe_height);
+	}
 }

@@ -24,9 +24,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <QtRcc Include="deflectometry_image_capture.qrc">
-      <Filter>Resource Files</Filter>
-    </QtRcc>
     <QtUic Include="deflectometry_image_capture.ui">
       <Filter>Resource Files</Filter>
     </QtUic>
@@ -53,12 +50,24 @@
     <ClCompile Include="captureThread.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="fringe.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DahengCamera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="projector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="fringe.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FringeSequence.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

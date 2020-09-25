@@ -73,7 +73,7 @@
     <property name="geometry">
      <rect>
       <x>1930</x>
-      <y>210</y>
+      <y>220</y>
       <width>231</width>
       <height>31</height>
      </rect>
@@ -116,17 +116,83 @@
      <rect>
       <x>1930</x>
       <y>600</y>
-      <width>391</width>
-      <height>121</height>
+      <width>417</width>
+      <height>301</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_3">
+     <item>
+      <widget class="QPushButton" name="pushButton_4">
+       <property name="text">
+        <string>初始化投影仪</string>
+       </property>
+      </widget>
+     </item>
      <item>
       <widget class="QPushButton" name="pushButton_5">
        <property name="text">
         <string>显示测试条纹</string>
        </property>
       </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="comboBox_2">
+       <item>
+        <property name="text">
+         <string>49</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>64</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>81</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>100</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>121</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>144</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>169</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>196</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>255</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>当前拍摄组数</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="spinBox"/>
      </item>
      <item>
       <widget class="QPushButton" name="pushButton_6">
@@ -154,6 +220,19 @@
       <widget class="HighGraphicsView" name="graphicsView_2"/>
      </item>
     </layout>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>1930</x>
+      <y>550</y>
+      <width>231</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;投影仪设置&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -184,9 +263,7 @@
    <header>HighGraphicsView.h</header>
   </customwidget>
  </customwidgets>
- <resources>
-  <include location="deflectometry_image_capture.qrc"/>
- </resources>
+ <resources/>
  <connections>
   <connection>
    <sender>pushButton</sender>
@@ -243,8 +320,8 @@
    <slot>show_fringer()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1932</x>
-     <y>710</y>
+     <x>1933</x>
+     <y>763</y>
     </hint>
     <hint type="destinationlabel">
      <x>1001</x>
@@ -259,8 +336,8 @@
    <slot>gather_image()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1932</x>
-     <y>773</y>
+     <x>1933</x>
+     <y>958</y>
     </hint>
     <hint type="destinationlabel">
      <x>1042</x>
@@ -284,6 +361,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pushButton_4</sender>
+   <signal>clicked()</signal>
+   <receiver>deflectometry_image_captureClass</receiver>
+   <slot>projector_init()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>2046</x>
+     <y>686</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1543</x>
+     <y>835</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>set_image_path()</slot>
@@ -295,5 +388,6 @@
   <slot>onMousePositionChanged(int,int)</slot>
   <slot>onWheelScrollChanged(int)</slot>
   <slot>one_camera_init()</slot>
+  <slot>projector_init()</slot>
  </slots>
 </ui>
