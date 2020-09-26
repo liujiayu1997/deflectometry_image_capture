@@ -101,6 +101,7 @@
   <ItemGroup>
     <ClCompile Include="captureThread.cpp" />
     <ClCompile Include="fringe.cpp" />
+    <ClCompile Include="ImageShow.cpp" />
     <ClCompile Include="X64\DEBUG\MOC\MOC_HIGHGRAPHICSVIEW.CPP" />
     <QtUic Include="deflectometry_image_capture.ui" />
     <QtMoc Include="deflectometry_image_capture.h" />
@@ -108,11 +109,13 @@
     <ClCompile Include="deflectometry_image_capture.cpp" />
     <ClCompile Include="HighGraphicsView.cpp" />
     <ClCompile Include="main.cpp" />
+    <QtUic Include="ImageShow.ui" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
     <ClInclude Include="fringe.h" />
     <ClInclude Include="FringeSequence.h" />
+    <QtMoc Include="ImageShow.h" />
     <ClInclude Include="projector.h" />
     <QtMoc Include="captureThread.h" />
     <ClInclude Include="DahengCamera.h" />

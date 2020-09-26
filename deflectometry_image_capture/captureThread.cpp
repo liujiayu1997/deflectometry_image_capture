@@ -5,12 +5,13 @@ captureThread::captureThread() : QObject() {}
 
 void captureThread::camera_init()
 {
+	m_mutex.lock();
 	m_camera = std::make_shared<DahengCamera>();
     bool flag = m_camera->init();
 	m_camera->getPictureResolution(im_width, im_height);
 	m_camera->startCaptureCallback();
-
 	emit image_size(im_width, im_height);
+	m_mutex.unlock();
 }
 
 void captureThread::save_image(bool is_vertival, int fringe_num, int fringe_step, int average_num, QString image_root)
@@ -37,6 +38,39 @@ void captureThread::save_image(bool is_vertival, int fringe_num, int fringe_step
 		image_save.write(image_capture.rgbSwapped().convertToFormat(QImage::Format_Grayscale8));
 		emit image(data);
 	}
+}
+
+void captureThread::set_auto_exposition(QString exposition_mode)
+{
+	m_camera->setExposureAuto(exposition_mode.toStdString());
+}
+
+void captureThread::set_exposition(float exposition_time)
+{
+	m_camera->setExposureAuto("Off");
+	m_camera->setExposureTime(exposition_time);
+}
+
+void captureThread::set_auto_white_balance(QString white_balance_mode)
+{
+	m_camera->setBalanceWhiteAuto(white_balance_mode.toStdString());
+}
+
+void captureThread::set_white_balance(float r, float g, float b)
+{
+	m_camera->setBalanceWhiteAuto("Off");
+	m_camera->setBalanceRatio(r, g, b);
+}
+
+void captureThread::set_auto_gain(QString gain_mode)
+{
+	m_camera->setGainAuto(gain_mode.toStdString());
+}
+
+void captureThread::set_gain(float gain)
+{
+	m_camera->setGainAuto("Off");
+	m_camera->setGain(gain);
 }
 
 void captureThread::image_capture() {

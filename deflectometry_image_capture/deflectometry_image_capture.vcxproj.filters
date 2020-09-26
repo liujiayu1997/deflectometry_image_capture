@@ -24,15 +24,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="deflectometry_image_capture.ui">
-      <Filter>Resource Files</Filter>
-    </QtUic>
     <QtMoc Include="deflectometry_image_capture.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <ClCompile Include="deflectometry_image_capture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <QtUic Include="ImageShow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -51,6 +51,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="fringe.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageShow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -82,5 +85,13 @@
     <QtMoc Include="captureThread.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="ImageShow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="deflectometry_image_capture.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
 </Project>
