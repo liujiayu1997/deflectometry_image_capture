@@ -116,7 +116,7 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="fringe.h" />
     <ClInclude Include="FringeSequence.h" />
-    <ClInclude Include="projectorThread.h" />
+    <QtMoc Include="projectorThread.h" />
     <QtMoc Include="ImageShow.h" />
     <ClInclude Include="projector.h" />
     <QtMoc Include="captureThread.h" />

@@ -1,13 +1,19 @@
 ﻿#include "deflectometry_image_capture.h"
+#include <QMetaType>
 
 deflectometry_image_capture::deflectometry_image_capture(QWidget* parent)
 	: QMainWindow(parent)
 {
 	ui.setupUi(this);
 	is_connected = false;
+
+	// 注册类型
+	qRegisterMetaType<std::shared_ptr<Fringe>>("std::shared_ptr<Fringe>");
 }
 
 deflectometry_image_capture::~deflectometry_image_capture() {
+	m_thread->wait();
+	m_thread->quit();
 }
 
 void deflectometry_image_capture::set_image_path()
@@ -61,7 +67,7 @@ void deflectometry_image_capture::show_fringer()
 	int fringe_num = ui.comboBox_2->currentText().toInt();
 	std::shared_ptr<Fringe> test_fringe(new Fringe(fringe_width, fringe_height, fringe_num, 0));
 	test_fringe->generate();
-	m_projector.displayFringe(test_fringe);
+	emit show_fringe(test_fringe);
 }
 
 void deflectometry_image_capture::gather_image()
@@ -116,8 +122,10 @@ void deflectometry_image_capture::main_capture()
 	ImageShow::save_success_num = 0;
 	if (current_fringe_num < display_fringe.size())
 	{
-		m_projector.displayFringe(display_fringe[current_fringe_num]->getFringeList()[current_step]);
-		emit save_image_with_fringe(display_fringe[current_fringe_num]->isVerticalFringe(), fringe_sequence[current_fringe_num], current_step, average_num);
+		//m_projector.displayFringe(display_fringe[current_fringe_num]->getFringeList()[current_step]);
+		emit show_fringe(display_fringe[current_fringe_num]->getFringeList()[current_step]);
+		QThread::msleep(500);
+		emit save_image_with_fringe(display_fringe[current_fringe_num]->isVerticalFringe(), fringe_sequence[current_fringe_num % fringe_sequence.size()], current_step, average_num);
 		if (current_step == shift_step - 1)
 		{
 			current_step = 0;
@@ -137,10 +145,35 @@ void deflectometry_image_capture::main_capture()
 
 void deflectometry_image_capture::projector_init()
 {
-	if (!m_projector.init())
-		QMessageBox::critical(this, tr("投影仪初始化"), tr("没有找到投影仪"));
+    m_projector_thread = std::make_shared<projectorThread>();
+	m_thread = std::make_unique<QThread>();
+	m_projector_thread->moveToThread(m_thread.get());
+
+	// 信号连接
+	connect(this, SIGNAL(init_signal()), m_projector_thread.get(), SLOT(init_projector()));
+	connect(m_projector_thread.get(), SIGNAL(init_success(bool)), this, SLOT(on_init_success(bool)));
+	connect(m_projector_thread.get(), SIGNAL(fringe_size(int, int)), this, SLOT(set_fringe_size(int, int)));
+	connect(this, SIGNAL(show_fringe(std::shared_ptr<Fringe>)), m_projector_thread.get(), SLOT(project_fringe(std::shared_ptr<Fringe>)));
+	//connect(this, SIGNAL(show_fringe()), m_projector_thread.get(), SLOT(project_fringe()));
+
+	
+	// 开启投影仪线程
+	m_thread->start();
+
+	// 发送初始化信号
+	emit init_signal();
+}
+
+void deflectometry_image_capture::on_init_success(bool success)
+{
+	if (success)
+		QMessageBox::information(this, tr("投影仪初始化"), tr("投影仪初始化成功"));
 	else
-	{
-		m_projector.getProjectorResolution(fringe_width, fringe_height);
-	}
+		QMessageBox::critical(this, tr("投影仪初始化"), tr("没有找到投影仪"));
+}
+
+void deflectometry_image_capture::set_fringe_size(int width, int height)
+{
+	fringe_width = width;
+	fringe_height = height;
 }
