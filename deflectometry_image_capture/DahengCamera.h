@@ -71,6 +71,14 @@ public:
 		//}
 		assert(m_counter++ < m_dinfovector.size());
 	};
+
+	DahengCamera(int current_index) : m_index(current_index) {
+		////TODO这里似乎有线程安全问题
+		//if (m_dinfovector.empty()) {
+		//	initCameraList();
+		//}
+		assert(m_counter++ < m_dinfovector.size());
+	};
 	virtual ~DahengCamera() { m_counter--; };
 
 	//必须在实例化DahengCamera之前调用

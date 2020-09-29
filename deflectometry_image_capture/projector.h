@@ -104,10 +104,11 @@ public:
 	void displayFringe(const std::shared_ptr<Fringe> fringe) {
 		if (0 != m_left || 0 != m_top) {
 			cv::imshow("fringe", fringe->getFringe());
-			cv::waitKey(20);
+			cv::waitKey(0);
 		}
 		return;
 	}
+
 	void displayFringeSequence(
 		const FringeList fringeList,
 		const unsigned int interval//时间间隔，单位ms?

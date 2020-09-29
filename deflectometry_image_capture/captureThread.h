@@ -13,7 +13,7 @@ class captureThread : public QObject
 	Q_OBJECT
 	
 public:
-	captureThread();
+	captureThread(int index);
 public slots:
 	void image_capture();
 	void camera_init();
@@ -30,7 +30,11 @@ signals:
 	void image(void* data);  //返回图像信号
 	void image_size(int im_width, int im_height);  //返回图像大小
 
+	// 标志着次线程采集数据完毕
+	void save_image_success();
+
 private:
+	int m_index;
 	std::shared_ptr<Camera> m_camera;
 	int im_width;
 	int im_height;

@@ -9,34 +9,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>2400</width>
-    <height>1800</height>
+    <width>490</width>
+    <height>1130</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>deflectometry_image_capture</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="Line" name="line">
-    <property name="geometry">
-     <rect>
-      <x>1860</x>
-      <y>80</y>
-      <width>20</width>
-      <height>1781</height>
-     </rect>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Vertical</enum>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>1923</x>
-      <y>130</y>
-      <width>231</width>
-      <height>31</height>
+      <x>180</x>
+      <y>20</y>
+      <width>128</width>
+      <height>38</height>
      </rect>
     </property>
     <property name="text">
@@ -46,17 +33,17 @@
    <widget class="QWidget" name="verticalLayoutWidget_2">
     <property name="geometry">
      <rect>
-      <x>1920</x>
-      <y>180</y>
+      <x>40</x>
+      <y>70</y>
       <width>391</width>
-      <height>206</height>
+      <height>181</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_2">
      <item>
       <widget class="QPushButton" name="pushButton_2">
        <property name="text">
-        <string>相机初始化</string>
+        <string>相机列表初始化</string>
        </property>
       </widget>
      </item>
@@ -64,16 +51,9 @@
       <widget class="QComboBox" name="comboBox"/>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_7">
+      <widget class="QPushButton" name="pushButton_8">
        <property name="text">
-        <string>显示图片</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_3">
-       <property name="text">
-        <string>关闭相机</string>
+        <string>打开相机界面</string>
        </property>
       </widget>
      </item>
@@ -82,10 +62,10 @@
    <widget class="QWidget" name="verticalLayoutWidget_3">
     <property name="geometry">
      <rect>
-      <x>1930</x>
-      <y>510</y>
-      <width>417</width>
-      <height>343</height>
+      <x>40</x>
+      <y>340</y>
+      <width>391</width>
+      <height>181</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -152,22 +132,155 @@
        </item>
       </widget>
      </item>
+    </layout>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>280</y>
+      <width>160</width>
+      <height>38</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;投影仪设置&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>590</y>
+      <width>391</width>
+      <height>419</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <widget class="QPushButton" name="pushButton">
        <property name="text">
-        <string>设置图像存储路径</string>
+        <string>设置图像储存路径</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_4">
+      <widget class="QLabel" name="label">
        <property name="text">
-        <string>当前拍摄组数</string>
+        <string>当前采集组数</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QSpinBox" name="spinBox"/>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>最佳三条纹选择</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="comboBox_3">
+       <item>
+        <property name="text">
+         <string>49</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>64</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>81</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>100</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>121</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>144</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>169</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>196</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>255</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>相移步数选择</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="comboBox_4">
+       <item>
+        <property name="text">
+         <string>4</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>8</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_7">
+       <property name="text">
+        <string>采集图像平均数</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="comboBox_5">
+       <item>
+        <property name="text">
+         <string>1</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>2</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>5</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>10</string>
+        </property>
+       </item>
+      </widget>
      </item>
      <item>
       <widget class="QPushButton" name="pushButton_6">
@@ -178,361 +291,17 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="verticalLayoutWidget_4">
+   <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>50</y>
-      <width>1141</width>
-      <height>1641</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_4">
-     <item>
-      <widget class="HighGraphicsView" name="graphicsView"/>
-     </item>
-     <item>
-      <widget class="HighGraphicsView" name="graphicsView_2"/>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>1930</x>
-      <y>460</y>
-      <width>231</width>
-      <height>31</height>
+      <x>140</x>
+      <y>550</y>
+      <width>192</width>
+      <height>38</height>
      </rect>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;投影仪设置&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-   </widget>
-   <widget class="QWidget" name="gridLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>1270</x>
-      <y>350</y>
-      <width>561</width>
-      <height>295</height>
-     </rect>
-    </property>
-    <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="0">
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>曝光时间</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0" alignment="Qt::AlignHCenter">
-      <widget class="QLabel" name="label_5">
-       <property name="text">
-        <string>白平衡</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QComboBox" name="comboBox_4">
-       <item>
-        <property name="text">
-         <string>Off</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Continuous</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Once</string>
-        </property>
-       </item>
-      </widget>
-     </item>
-     <item row="2" column="3">
-      <widget class="QPushButton" name="pushButton_10">
-       <property name="text">
-        <string>设置</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="2">
-      <widget class="QLineEdit" name="lineEdit_5">
-       <property name="text">
-        <string>1</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="3">
-      <widget class="QPushButton" name="pushButton_9">
-       <property name="text">
-        <string>设置</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0" alignment="Qt::AlignHCenter">
-      <widget class="QLabel" name="label_6">
-       <property name="text">
-        <string>增益</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="1">
-      <widget class="QComboBox" name="comboBox_5">
-       <item>
-        <property name="text">
-         <string>Off</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Continuous</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Once</string>
-        </property>
-       </item>
-      </widget>
-     </item>
-     <item row="0" column="2">
-      <widget class="QLineEdit" name="lineEdit">
-       <property name="text">
-        <string>60000</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="3">
-      <widget class="QPushButton" name="pushButton_8">
-       <property name="text">
-        <string>设置</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QComboBox" name="comboBox_3">
-       <item>
-        <property name="text">
-         <string>Off</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Continuous</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Once</string>
-        </property>
-       </item>
-      </widget>
-     </item>
-     <item row="1" column="2">
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <item>
-        <widget class="QLineEdit" name="lineEdit_2">
-         <property name="text">
-          <string>1</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="lineEdit_3">
-         <property name="text">
-          <string>1</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="lineEdit_4">
-         <property name="text">
-          <string>1</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QPushButton" name="pushButton_11">
-    <property name="geometry">
-     <rect>
-      <x>1270</x>
-      <y>260</y>
-      <width>571</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>导入相机参数表</string>
-    </property>
-   </widget>
-   <widget class="QWidget" name="gridLayoutWidget_2">
-    <property name="geometry">
-     <rect>
-      <x>1270</x>
-      <y>1140</y>
-      <width>561</width>
-      <height>295</height>
-     </rect>
-    </property>
-    <layout class="QGridLayout" name="gridLayout_3">
-     <item row="0" column="0">
-      <widget class="QLabel" name="label_10">
-       <property name="text">
-        <string>曝光时间</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0" alignment="Qt::AlignHCenter">
-      <widget class="QLabel" name="label_11">
-       <property name="text">
-        <string>白平衡</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QComboBox" name="comboBox_9">
-       <item>
-        <property name="text">
-         <string>Off</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Continuous</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Once</string>
-        </property>
-       </item>
-      </widget>
-     </item>
-     <item row="2" column="3">
-      <widget class="QPushButton" name="pushButton_15">
-       <property name="text">
-        <string>设置</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="2">
-      <widget class="QLineEdit" name="lineEdit_11">
-       <property name="text">
-        <string>1</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="3">
-      <widget class="QPushButton" name="pushButton_16">
-       <property name="text">
-        <string>设置</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0" alignment="Qt::AlignHCenter">
-      <widget class="QLabel" name="label_12">
-       <property name="text">
-        <string>增益</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="1">
-      <widget class="QComboBox" name="comboBox_10">
-       <item>
-        <property name="text">
-         <string>Off</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Continuous</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Once</string>
-        </property>
-       </item>
-      </widget>
-     </item>
-     <item row="0" column="2">
-      <widget class="QLineEdit" name="lineEdit_12">
-       <property name="text">
-        <string>60000</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="3">
-      <widget class="QPushButton" name="pushButton_17">
-       <property name="text">
-        <string>设置</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QComboBox" name="comboBox_11">
-       <item>
-        <property name="text">
-         <string>Off</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Continuous</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Once</string>
-        </property>
-       </item>
-      </widget>
-     </item>
-     <item row="1" column="2">
-      <layout class="QVBoxLayout" name="verticalLayout_6">
-       <item>
-        <widget class="QLineEdit" name="lineEdit_13">
-         <property name="text">
-          <string>1</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="lineEdit_14">
-         <property name="text">
-          <string>1</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="lineEdit_15">
-         <property name="text">
-          <string>1</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QPushButton" name="pushButton_18">
-    <property name="geometry">
-     <rect>
-      <x>1270</x>
-      <y>1050</y>
-      <width>571</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>导入相机参数表</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;数据采集设置&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
   </widget>
@@ -541,7 +310,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>2400</width>
+     <width>490</width>
      <height>37</height>
     </rect>
    </property>
@@ -557,31 +326,8 @@
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <customwidgets>
-  <customwidget>
-   <class>HighGraphicsView</class>
-   <extends>QGraphicsView</extends>
-   <header>HighGraphicsView.h</header>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections>
-  <connection>
-   <sender>pushButton</sender>
-   <signal>clicked()</signal>
-   <receiver>deflectometry_image_captureClass</receiver>
-   <slot>set_image_path()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1932</x>
-     <y>728</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1158</x>
-     <y>184</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>pushButton_2</sender>
    <signal>clicked()</signal>
@@ -589,28 +335,12 @@
    <slot>camera_init()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1931</x>
-     <y>255</y>
+     <x>429</x>
+     <y>175</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1088</x>
+     <x>444</x>
      <y>274</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton_3</sender>
-   <signal>clicked()</signal>
-   <receiver>deflectometry_image_captureClass</receiver>
-   <slot>close_camera()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1930</x>
-     <y>443</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1006</x>
-     <y>446</y>
     </hint>
    </hints>
   </connection>
@@ -621,11 +351,11 @@
    <slot>show_fringer()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1934</x>
-     <y>673</y>
+     <x>429</x>
+     <y>503</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1001</x>
+     <x>444</x>
      <y>558</y>
     </hint>
    </hints>
@@ -637,28 +367,12 @@
    <slot>gather_image()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1934</x>
-     <y>910</y>
+     <x>429</x>
+     <y>1066</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1042</x>
+     <x>444</x>
      <y>694</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton_7</sender>
-   <signal>clicked()</signal>
-   <receiver>deflectometry_image_captureClass</receiver>
-   <slot>show_picture()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>2039</x>
-     <y>385</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1574</x>
-     <y>487</y>
     </hint>
    </hints>
   </connection>
@@ -669,11 +383,11 @@
    <slot>projector_init()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>2047</x>
-     <y>615</y>
+     <x>429</x>
+     <y>445</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1543</x>
+     <x>444</x>
      <y>835</y>
     </hint>
    </hints>
@@ -682,95 +396,31 @@
    <sender>pushButton_8</sender>
    <signal>clicked()</signal>
    <receiver>deflectometry_image_captureClass</receiver>
-   <slot>on_set_exposition_one()</slot>
+   <slot>one_camera_init()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1739</x>
-     <y>449</y>
+     <x>307</x>
+     <y>258</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1406</x>
-     <y>752</y>
+     <x>444</x>
+     <y>371</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>pushButton_9</sender>
+   <sender>pushButton</sender>
    <signal>clicked()</signal>
    <receiver>deflectometry_image_captureClass</receiver>
-   <slot>on_set_white_balance_one()</slot>
+   <slot>set_image_path()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1786</x>
-     <y>559</y>
+     <x>342</x>
+     <y>671</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1311</x>
-     <y>927</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton_10</sender>
-   <signal>clicked()</signal>
-   <receiver>deflectometry_image_captureClass</receiver>
-   <slot>on_set_gain_one()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1800</x>
-     <y>672</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1461</x>
-     <y>990</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton_17</sender>
-   <signal>clicked()</signal>
-   <receiver>deflectometry_image_captureClass</receiver>
-   <slot>on_set_exposition_two()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1756</x>
-     <y>1219</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1409</x>
-     <y>1579</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton_16</sender>
-   <signal>clicked()</signal>
-   <receiver>deflectometry_image_captureClass</receiver>
-   <slot>on_set_white_balance_two()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1787</x>
-     <y>1346</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1377</x>
-     <y>1650</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton_15</sender>
-   <signal>clicked()</signal>
-   <receiver>deflectometry_image_captureClass</receiver>
-   <slot>on_set_gain_two()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1803</x>
-     <y>1459</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1317</x>
-     <y>1705</y>
+     <x>466</x>
+     <y>731</y>
     </hint>
    </hints>
   </connection>

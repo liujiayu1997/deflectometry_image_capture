@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1376</width>
-    <height>1156</height>
+    <width>1773</width>
+    <height>841</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,6 +23,203 @@
     </rect>
    </property>
   </widget>
+  <widget class="QWidget" name="gridLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>1160</x>
+     <y>430</y>
+     <width>561</width>
+     <height>295</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="1" column="1">
+     <widget class="QComboBox" name="white_balance_combo_box">
+      <item>
+       <property name="text">
+        <string>Off</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Continuous</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Once</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>曝光时间</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0" alignment="Qt::AlignHCenter">
+     <widget class="QLabel" name="label_5">
+      <property name="text">
+       <string>白平衡</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="3">
+     <widget class="QPushButton" name="exposition_button">
+      <property name="text">
+       <string>设置</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QComboBox" name="expostion_combo_box">
+      <item>
+       <property name="text">
+        <string>Off</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Continuous</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Once</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="1" column="2">
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QLineEdit" name="lineEdit_2">
+        <property name="text">
+         <string>1</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit_3">
+        <property name="text">
+         <string>1</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit_4">
+        <property name="text">
+         <string>1</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="3">
+     <widget class="QPushButton" name="white_balance_button">
+      <property name="text">
+       <string>设置</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="3">
+     <widget class="QPushButton" name="gain_button">
+      <property name="text">
+       <string>设置</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="2">
+     <widget class="QLineEdit" name="lineEdit_5">
+      <property name="text">
+       <string>1</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <widget class="QLineEdit" name="lineEdit">
+      <property name="text">
+       <string>60000</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0" alignment="Qt::AlignHCenter">
+     <widget class="QLabel" name="label_6">
+      <property name="text">
+       <string>增益</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QComboBox" name="gain_combo_box">
+      <item>
+       <property name="text">
+        <string>Off</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Continuous</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Once</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="verticalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>1240</x>
+     <y>90</y>
+     <width>391</width>
+     <height>280</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
+     <widget class="QPushButton" name="config_button">
+      <property name="text">
+       <string>导入相机参数表</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="text">
+       <string>相机初始化</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_7">
+      <property name="text">
+       <string>显示图片</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_3">
+      <property name="text">
+       <string>停止更新</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton">
+      <property name="text">
+       <string>关闭相机</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
@@ -33,5 +230,110 @@
   </customwidget>
  </customwidgets>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>pushButton_7</sender>
+   <signal>clicked()</signal>
+   <receiver>ImageShow</receiver>
+   <slot>show_picture()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1460</x>
+     <y>222</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1713</x>
+     <y>194</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_3</sender>
+   <signal>clicked()</signal>
+   <receiver>ImageShow</receiver>
+   <slot>close_camera()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1478</x>
+     <y>291</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1711</x>
+     <y>275</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>exposition_button</sender>
+   <signal>clicked()</signal>
+   <receiver>ImageShow</receiver>
+   <slot>on_set_exposition()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1649</x>
+     <y>468</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1710</x>
+     <y>387</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>white_balance_button</sender>
+   <signal>clicked()</signal>
+   <receiver>ImageShow</receiver>
+   <slot>on_set_white_balance()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1653</x>
+     <y>585</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1729</x>
+     <y>636</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>gain_button</sender>
+   <signal>clicked()</signal>
+   <receiver>ImageShow</receiver>
+   <slot>on_set_gain()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1614</x>
+     <y>688</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1614</x>
+     <y>744</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>ImageShow</receiver>
+   <slot>camera_init()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1568</x>
+     <y>176</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1696</x>
+     <y>143</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>show_picture()</slot>
+  <slot>camera_init()</slot>
+  <slot>close_camera()</slot>
+  <slot>on_set_exposition()</slot>
+  <slot>on_set_white_balance()</slot>
+  <slot>on_set_gain()</slot>
+ </slots>
 </ui>
