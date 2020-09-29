@@ -22,7 +22,7 @@ void captureThread::save_image(bool is_vertival, int fringe_num, int fringe_step
 		m_camera->emitTriggerSoftware();
 		while (true)
 		{
-			if (m_camera->getCallbackData(data, 100))
+			if (m_camera->getCallbackData(data, 10))
 				break;
 		}
 		qDebug() << "Image capture thread" << QThread::currentThread();
