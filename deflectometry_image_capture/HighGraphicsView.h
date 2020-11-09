@@ -5,7 +5,6 @@
 #include <QImage>
 #include <memory>
 #include <QScrollBar>
-#include "DahengCamera.h"
 #include <QMutex>
 #include <QMessageBox>
 #include <Qthread>

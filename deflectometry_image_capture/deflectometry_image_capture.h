@@ -7,7 +7,12 @@
 #include "ImageShow.h"
 #include <cmath>
 #include "projectorThread.h"
+#include "AVT/ApiController.h"
 
+
+using namespace AVT::VmbAPI::Examples;
+using AVT::VmbAPI::FramePtr;
+using AVT::VmbAPI::CameraPtrVector;
 
 #if defined(_MSC_VER) && (_MSC_VER >= 1600)    
 # pragma execution_character_set("utf-8")    
@@ -22,6 +27,10 @@ public:
     ~deflectometry_image_capture();
 
 private:
+    // 相机初始化控件
+    ApiController m_ApiController;
+    std::vector<std::string> m_cameras;
+
     // UI组件参数
     Ui::deflectometry_image_captureClass ui;
     QString image_path;

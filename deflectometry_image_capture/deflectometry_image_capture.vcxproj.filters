@@ -36,21 +36,21 @@
     <QtMoc Include="projectorThread.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="AVT\CameraObserver.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="AVT\FrameObserver.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="DahengCamera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="HighGraphicsView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="X64\DEBUG\MOC\MOC_HIGHGRAPHICSVIEW.CPP">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="captureThread.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="fringe.cpp">
@@ -62,14 +62,17 @@
     <ClCompile Include="projectorThread.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AVT\ApiController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AVT\CameraObserver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AVT\FrameObserver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Camera.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DahengCamera.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="projector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -79,6 +82,15 @@
     <ClInclude Include="FringeSequence.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AVT\ApiController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AVT\ErrorCodeToMessage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AVT\StreamSystemInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
@@ -86,9 +98,6 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="HighGraphicsView.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="captureThread.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="ImageShow.h">

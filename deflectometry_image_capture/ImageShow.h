@@ -2,9 +2,7 @@
 
 #include <QWidget>
 #include "ui_ImageShow.h"
-#include <DahengCamera.h>
 #include "HighGraphicsView.h"
-#include "captureThread.h"
 #include <string>
 #include <Qthread>
 #include <QTimer>
@@ -29,7 +27,6 @@ private:
 	int m_index;
 
 	// 线程对象
-	std::shared_ptr<captureThread> m_camera;
 	std::unique_ptr<QThread> m_thread;
 
 	// 计时器对象
