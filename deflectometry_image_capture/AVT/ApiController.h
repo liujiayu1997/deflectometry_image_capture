@@ -32,7 +32,8 @@
 
 #include <string>
 
-#include <VimbaCPP/Include/VimbaCPP.h>
+#include "VimbaCPP/Include/VimbaCPP.h"
+#include "VimbaImageTransform/Include/VmbTransform.h"
 
 #include <CameraObserver.h>
 #include <FrameObserver.h>

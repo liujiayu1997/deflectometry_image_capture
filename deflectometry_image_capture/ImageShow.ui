@@ -62,7 +62,7 @@
     <item row="1" column="0" alignment="Qt::AlignHCenter">
      <widget class="QLabel" name="label_5">
       <property name="text">
-       <string>白平衡</string>
+       <string>灰度等级</string>
       </property>
      </widget>
     </item>
@@ -95,21 +95,7 @@
     <item row="1" column="2">
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <widget class="QLineEdit" name="lineEdit_2">
-        <property name="text">
-         <string>1</string>
-        </property>
-       </widget>
-      </item>
-      <item>
        <widget class="QLineEdit" name="lineEdit_3">
-        <property name="text">
-         <string>1</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="lineEdit_4">
         <property name="text">
          <string>1</string>
         </property>
@@ -191,13 +177,6 @@
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_2">
-      <property name="text">
-       <string>相机初始化</string>
-      </property>
-     </widget>
-    </item>
-    <item>
      <widget class="QPushButton" name="pushButton_7">
       <property name="text">
        <string>显示图片</string>
@@ -238,8 +217,8 @@
    <slot>show_picture()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1460</x>
-     <y>222</y>
+     <x>1461</x>
+     <y>216</y>
     </hint>
     <hint type="destinationlabel">
      <x>1713</x>
@@ -254,8 +233,8 @@
    <slot>close_camera()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1478</x>
-     <y>291</y>
+     <x>1479</x>
+     <y>285</y>
     </hint>
     <hint type="destinationlabel">
      <x>1711</x>
@@ -308,22 +287,6 @@
     <hint type="destinationlabel">
      <x>1614</x>
      <y>744</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton_2</sender>
-   <signal>clicked()</signal>
-   <receiver>ImageShow</receiver>
-   <slot>camera_init()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1568</x>
-     <y>176</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1696</x>
-     <y>143</y>
     </hint>
    </hints>
   </connection>

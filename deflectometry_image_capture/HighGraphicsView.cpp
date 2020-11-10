@@ -32,6 +32,20 @@ void HighGraphicsView::setImage(void *data)
 	qDebug() << "Graphics thread" << QThread::currentThread();
 }
 
+// ÔÚGraphicsViewÉÏÏÔÊ¾Í¼Æ¬
+void HighGraphicsView::setImage(QImage image)
+{
+	
+	//cv::Mat test_image(im_height, im_width, CV_8UC3, data);
+	this->image = image;
+	current_width = this->width();
+	current_height = int(double(im_height) / double(im_width) * double(current_width));
+	const QSize s = this->size();
+	scene->addPixmap(QPixmap::fromImage(this->image.scaled(s, Qt::KeepAspectRatio)));
+	this->setScene(scene);
+	qDebug() << "Graphics thread" << QThread::currentThread();
+}
+
 void HighGraphicsView::setImageSize(int width, int height)
 {
 	this->im_height = height;

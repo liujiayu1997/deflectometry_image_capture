@@ -28,6 +28,7 @@ public slots:
 	void onMousePositionChanged(int x, int y);
 	void onWheelScrollChanged(int step);
 	void setImage(void* data);
+	void setImage(QImage image);
 	void setImageSize(int width, int height);
 
 protected:

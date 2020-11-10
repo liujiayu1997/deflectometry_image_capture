@@ -26,9 +26,11 @@ void deflectometry_image_capture::one_camera_init()
 {
 	int current_select = ui.comboBox->currentIndex();
 
-	std::shared_ptr<ImageShow> current_ui = std::make_shared<ImageShow>(current_select);
+	std::shared_ptr<ImageShow> current_ui = std::make_shared<ImageShow>(m_cameras[current_select], m_ApiController);
 	//  创建子ui
 	this->m_image_ui.push_back(current_ui);
+
+	current_ui->show();
 }
 
 void deflectometry_image_capture::camera_init()
