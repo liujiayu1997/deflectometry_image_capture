@@ -47,18 +47,18 @@ private:
     std::shared_ptr<projectorThread> m_projector_thread;
     std::unique_ptr<QThread> m_thread;
 
-    // 采图第一次点击标志位
-    bool is_connected;
-
     // 当前实验组数
     int current_experient;
 
     // 子界面
     std::vector<std::shared_ptr<ImageShow>> m_image_ui;
 
-    // 采集系数
+    // 采集系数, 标志当前的条纹
     int current_fringe_num;
     int current_step;
+
+    // 各相机采集成功标志位
+    int m_save_success_num;
 
 
 public slots:
@@ -80,15 +80,20 @@ public slots:
     void projector_init();
     void on_init_success(bool success);
     void set_fringe_size(int width, int height);
+    void on_all_save_success();
 
 signals:
     //void capture_image();
     //void stop_capture_image();
+    // 开始采集一组图片的信号
     void start_save_image();
-    void save_image_with_fringe(bool, int, int, int);
+
+    // 开始采集一次条纹图的信号
+    void save_image_with_fringe(int, int, int, bool);
 
     // 投影仪线程信号
     void init_signal();
     void init_success(bool success);
     void show_fringe(std::shared_ptr<Fringe>);
+    void all_save_success();
 };

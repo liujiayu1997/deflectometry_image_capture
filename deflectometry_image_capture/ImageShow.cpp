@@ -4,8 +4,8 @@ int ImageShow::ui_counter = 0;
 int ImageShow::save_success_num = 0;
 
 
-ImageShow::ImageShow(std::string ID, ApiController& root_controler,QWidget *parent)
-	: QWidget(parent),m_ApiController(root_controler),m_ID(ID)
+ImageShow::ImageShow(std::string ID, QWidget *parent)
+	: QWidget(parent), m_ID(ID)
 {
 	ui.setupUi(this);
 	ui_counter++;
@@ -105,24 +105,25 @@ VmbErrorType ImageShow::CopyToImage(VmbUchar_t* pInBuffer, VmbPixelFormat_t ePix
     return static_cast<VmbErrorType>(Result);
 }
 
+void ImageShow::set_save_path(QString path_root, int current_experient_num)
+{
+    QString camera_path = path_root + QString::fromStdString("/") + QString::fromStdString(m_ID);
+    m_saving_root = (camera_path + QString::fromStdString("/") + QString::number(current_experient_num)).toStdString();
+
+    // 文件夹创建
+    QDir dir_path_root(camera_path);
+    if (!dir_path_root.exists())
+        dir_path_root.mkpath(QString::fromStdString(m_saving_root));
+    else
+        dir_path_root.mkdir(QString::number(current_experient_num));
+}
+
 void ImageShow::close_camera()
 {
     VmbErrorType err = m_ApiController.StopContinuousImageAcquisition();
     // Clear all frames that we have not picked up so far
     m_ApiController.ClearFrameQueue();
     m_image = QImage();
-}
-
-void ImageShow::on_set_exposition()
-{
-}
-
-void ImageShow::on_set_white_balance()
-{
-}
-
-void ImageShow::on_set_gain()
-{
 }
 
 void ImageShow::OnFrameReady(int status)
@@ -155,6 +156,26 @@ void ImageShow::OnFrameReady(int status)
                         m_ApiController.GetHeight(),
                         QImage::Format_Grayscale8);
                     ui.graphicsView->setImage(m_image);
+                    if (whether_save)
+                    {
+                        if (m_current_count == m_average_num)
+                        {
+                            whether_save = false;
+                            emit save_success();
+                        }
+                        else
+                        {
+                            QString image_name;
+                            if (is_vertical)
+                                image_name = QString::fromStdString("phase_x") + QString::number(m_fringe_num) + QString::fromStdString("_") + QString::number(m_fringe_step) + QString::fromStdString("-") + QString::number(m_current_count) + QString::fromStdString(".bmp");
+                            else
+                                image_name = QString::fromStdString("phase_y") + QString::number(m_fringe_num) + QString::fromStdString("_") + QString::number(m_fringe_step) + QString::fromStdString("-") + QString::number(m_current_count) + QString::fromStdString(".bmp");
+                            QString image_path = QString::fromStdString(m_saving_root) + QString::fromStdString("/") + image_name;
+                            QImageWriter image_save(image_path);
+                            image_save.write(m_image);
+                            m_current_count++;
+                        }
+                    }
                 }
             }
         }
@@ -162,6 +183,16 @@ void ImageShow::OnFrameReady(int status)
         // And queue it to continue streaming
         m_ApiController.QueueFrame(pFrame);
     }
+}
+
+void ImageShow::start_save_image(int fringe_step, int fringe_num, int average_num, bool vertical)
+{
+    m_fringe_num = fringe_num;
+    m_fringe_step = fringe_step;
+    m_average_num = average_num;
+    is_vertical = vertical;
+    m_current_count = 0;
+    whether_save = true;
 }
 
 

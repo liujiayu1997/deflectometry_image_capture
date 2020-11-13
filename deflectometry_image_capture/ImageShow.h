@@ -11,6 +11,7 @@
 #include <QMessageBox>
 #include <QFileDialog>
 #include <memory>
+#include <QImageWriter>
 
 #include "AVT/ApiController.h"
 
@@ -24,7 +25,7 @@ class ImageShow : public QWidget
 	Q_OBJECT
 
 public:
-	ImageShow(std::string ID, ApiController& root_controller,QWidget *parent = Q_NULLPTR);
+	ImageShow(std::string ID, QWidget *parent = Q_NULLPTR);
 	~ImageShow();
 
 private:
@@ -34,10 +35,19 @@ private:
 	std::string m_ID;
 
 	// VIMBA 控制器对象
-	ApiController& m_ApiController;
+	ApiController m_ApiController;
 
 	// 显示图片
 	QImage m_image;
+
+	// 是否存取
+	bool whether_save;
+	bool is_vertical;
+	int m_fringe_num;
+	int m_fringe_step;
+	int m_average_num;
+	int m_current_count;
+	std::string m_saving_root;
 
 	// 线程对象
 	//std::unique_ptr<QThread> m_thread;
@@ -46,19 +56,17 @@ public:
 	// 所有子界面图像储存是否结束的标志位
 	static int save_success_num;
 	VmbErrorType CopyToImage(VmbUchar_t* pInBuffer, VmbPixelFormat_t ePixelFormat, QImage& pOutImage, const float* Matrix = NULL);
+	void set_save_path(QString path_root, int current_experient_num);
 
 public slots:
 	// 图片显示槽函数
 	void show_picture();
 	void close_camera();
 
-	//相机参数修改槽函数
-	void on_set_exposition();
-	void on_set_white_balance();
-	void on_set_gain();
-
 	// 获取帧
 	void OnFrameReady(int status);
+	void start_save_image(int fringe_step, int fringe_num, int average_num, bool vertical);
 
 signals:
+	void save_success();
 };
