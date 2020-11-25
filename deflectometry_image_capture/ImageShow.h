@@ -12,9 +12,10 @@
 #include <QFileDialog>
 #include <memory>
 #include <QImageWriter>
-
+#include <QMutex>
+#include <QDebug>
 #include "AVT/ApiController.h"
-
+#include "saveThread.h"
 
 using namespace AVT::VmbAPI::Examples;
 using AVT::VmbAPI::FramePtr;
@@ -38,19 +39,20 @@ private:
 	ApiController m_ApiController;
 
 	// 显示图片
-	QImage m_image;
-
-	// 是否存取
-	bool whether_save;
-	bool is_vertical;
-	int m_fringe_num;
-	int m_fringe_step;
-	int m_average_num;
-	int m_current_count;
-	std::string m_saving_root;
+	QImage m_image, m_image_save;
 
 	// 线程对象
 	//std::unique_ptr<QThread> m_thread;
+
+	// 线程锁
+	QMutex m_mutex;
+
+	// 储存路径
+	std::string m_saving_root;
+
+	// 存取图片线程
+	std::shared_ptr<saveThread> m_save_thread;
+	std::unique_ptr<QThread> m_thread;
 
 public:
 	// 所有子界面图像储存是否结束的标志位
@@ -65,8 +67,12 @@ public slots:
 
 	// 获取帧
 	void OnFrameReady(int status);
-	void start_save_image(int fringe_step, int fringe_num, int average_num, bool vertical);
+	void start_save_image(int fringe_num, int fringe_step, int average_num, bool vertical);
+
+	// 采集成功信号
+	void on_save_success();
 
 signals:
 	void save_success();
+	void save_image_data();
 };

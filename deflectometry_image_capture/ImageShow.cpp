@@ -10,10 +10,22 @@ ImageShow::ImageShow(std::string ID, QWidget *parent)
 	ui.setupUi(this);
 	ui_counter++;
 	setWindowTitle(QString("Current Camera: ") + QString::fromStdString(m_ID));
+
+    m_save_thread = std::make_shared<saveThread>();
+    m_thread = std::make_unique<QThread>();
+    m_save_thread->moveToThread(m_thread.get());
+
+    // ´¢´æÐÅºÅÁ¬½Ó
+    connect(this, SIGNAL(save_image_data()), m_save_thread.get(), SLOT(save_image()));
+    connect(m_save_thread.get(), SIGNAL(save_success()), this, SLOT(on_save_success()));
+
+    m_thread->start();
 }
 
 ImageShow::~ImageShow()
 {
+    m_thread->wait();
+	m_thread->quit();
 }
 
 void ImageShow::show_picture()
@@ -128,11 +140,16 @@ void ImageShow::close_camera()
 
 void ImageShow::OnFrameReady(int status)
 {
+    m_mutex.lock();
     // Pick up frame
     FramePtr pFrame = m_ApiController.GetFrame();
     if (SP_ISNULL(pFrame))
     {
-        QMessageBox::warning(this, tr("Get frame warnning"), tr("frame pointer is NULL, late frame ready message"));
+        //QMessageBox::warning(this, tr("Get frame warnning"), tr("frame pointer is NULL, late frame ready message"));
+        //VmbErrorType err = m_ApiController.StopContinuousImageAcquisition();
+        // Clear all frames that we have not picked up so far
+        //m_ApiController.ClearFrameQueue();
+        //err = m_ApiController.StartContinuousImageAcquisition(m_ID);
         return;
     }
     // See if it is not corrupt
@@ -156,43 +173,29 @@ void ImageShow::OnFrameReady(int status)
                         m_ApiController.GetHeight(),
                         QImage::Format_Grayscale8);
                     ui.graphicsView->setImage(m_image);
-                    if (whether_save)
-                    {
-                        if (m_current_count == m_average_num)
-                        {
-                            whether_save = false;
-                            emit save_success();
-                        }
-                        else
-                        {
-                            QString image_name;
-                            if (is_vertical)
-                                image_name = QString::fromStdString("phase_x") + QString::number(m_fringe_num) + QString::fromStdString("_") + QString::number(m_fringe_step) + QString::fromStdString("-") + QString::number(m_current_count) + QString::fromStdString(".bmp");
-                            else
-                                image_name = QString::fromStdString("phase_y") + QString::number(m_fringe_num) + QString::fromStdString("_") + QString::number(m_fringe_step) + QString::fromStdString("-") + QString::number(m_current_count) + QString::fromStdString(".bmp");
-                            QString image_path = QString::fromStdString(m_saving_root) + QString::fromStdString("/") + image_name;
-                            QImageWriter image_save(image_path);
-                            image_save.write(m_image);
-                            m_current_count++;
-                        }
-                    }
+                    //m_save_thread->m_image = m_image.copy();
+                    m_save_thread->m_image = m_image;
+                    emit save_image_data();
                 }
             }
         }
 
         // And queue it to continue streaming
         m_ApiController.QueueFrame(pFrame);
+        qDebug() << "Main thread :" << QThread::currentThread();
     }
+    m_mutex.unlock();
 }
 
-void ImageShow::start_save_image(int fringe_step, int fringe_num, int average_num, bool vertical)
+void ImageShow::start_save_image(int fringe_num, int fringe_step, int average_num, bool vertical)
 {
-    m_fringe_num = fringe_num;
-    m_fringe_step = fringe_step;
-    m_average_num = average_num;
-    is_vertical = vertical;
-    m_current_count = 0;
-    whether_save = true;
+    // m_ApiController.ClearFrameQueue();
+    m_save_thread->set_save_config(m_saving_root, fringe_num, fringe_step, average_num, vertical);
+}
+
+void ImageShow::on_save_success()
+{
+    emit save_success();
 }
 
 

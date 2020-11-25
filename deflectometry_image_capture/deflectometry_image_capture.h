@@ -81,6 +81,7 @@ public slots:
     void on_init_success(bool success);
     void set_fringe_size(int width, int height);
     void on_all_save_success();
+    void on_generate_fringe();
 
 signals:
     //void capture_image();

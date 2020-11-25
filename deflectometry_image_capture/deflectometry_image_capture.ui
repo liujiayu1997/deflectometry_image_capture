@@ -283,6 +283,13 @@
       </widget>
      </item>
      <item>
+      <widget class="QPushButton" name="pushButton_3">
+       <property name="text">
+        <string>生成条纹</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="pushButton_6">
        <property name="text">
         <string>开始采集图像</string>
@@ -367,8 +374,8 @@
    <slot>gather_image()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>429</x>
-     <y>1066</y>
+     <x>430</x>
+     <y>1168</y>
     </hint>
     <hint type="destinationlabel">
      <x>444</x>
@@ -424,6 +431,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pushButton_3</sender>
+   <signal>clicked()</signal>
+   <receiver>deflectometry_image_captureClass</receiver>
+   <slot>on_generate_fringe()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>480</x>
+     <y>1094</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>612</x>
+     <y>990</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>set_image_path()</slot>
@@ -442,5 +465,6 @@
   <slot>on_set_exposition_two()</slot>
   <slot>on_set_white_balance_two()</slot>
   <slot>on_set_gain_two()</slot>
+  <slot>on_generate_fringe()</slot>
  </slots>
 </ui>

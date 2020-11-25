@@ -224,6 +224,7 @@ VmbErrorType ApiController::StopContinuousImageAcquisition()
 
     // Close camera
     return  m_pCamera->Close();
+
 }
 
 //

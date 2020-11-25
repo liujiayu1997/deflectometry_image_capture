@@ -8,6 +8,7 @@ deflectometry_image_capture::deflectometry_image_capture(QWidget* parent)
 
 	// 注册类型
 	qRegisterMetaType<std::shared_ptr<Fringe>>("std::shared_ptr<Fringe>");
+	qRegisterMetaType<std::string>("std::string");
 
 	// 图像储存信号连接
 	connect(this, SIGNAL(start_save_image()), this, SLOT(main_capture()));
@@ -25,6 +26,7 @@ void deflectometry_image_capture::set_image_path()
 	this->image_path = image_path;
 	QMessageBox::information(this, tr("已选择路径"), image_path);
 }
+
 void deflectometry_image_capture::one_camera_init()
 {
 	int current_select = ui.comboBox->currentIndex();
@@ -92,28 +94,6 @@ void deflectometry_image_capture::gather_image()
 		m_image_ui[i]->set_save_path(image_path, current_experient);
 	}
 
-	// 初始化条纹周期
-	int fringe_max = ui.comboBox_3->currentText().toInt();
-	fringe_sequence.push_back(fringe_max);
-	fringe_sequence.push_back(fringe_max - 1);
-	fringe_sequence.push_back(fringe_max - int(sqrt(fringe_max)));
-
-	//初始化相移步数以及平均数
-	shift_step = ui.comboBox_4->currentText().toInt();
-	average_num = ui.comboBox_5->currentText().toInt();
-
-	for (int i = 0; i < fringe_sequence.size(); i++)
-	{
-		std::shared_ptr<FringeSequence> fringe(new FringeSequence);
-		fringe->init(fringe_sequence[i], fringe_width, fringe_height, shift_step, 1);
-		display_fringe.push_back(fringe);
-	}
-	for (int i = 0; i < fringe_sequence.size(); i++)
-	{
-		std::shared_ptr<FringeSequence> fringe(new FringeSequence);
-		fringe->init(fringe_sequence[i], fringe_width, fringe_height, shift_step, 0);
-		display_fringe.push_back(fringe);
-	}
 	current_experient++;
 	ui.spinBox->setValue(current_experient);
 
@@ -130,7 +110,7 @@ void deflectometry_image_capture::main_capture()
 	{
 		//m_projector.displayFringe(display_fringe[current_fringe_num]->getFringeList()[current_step]);
 		emit show_fringe(display_fringe[current_fringe_num]->getFringeList()[current_step]);
-		QThread::msleep(500);
+		// QThread::msleep(500);
 		emit save_image_with_fringe(fringe_sequence[current_fringe_num % fringe_sequence.size()], current_step, average_num, display_fringe[current_fringe_num]->isVerticalFringe());
 		if (current_step == shift_step - 1)
 		{
@@ -186,4 +166,31 @@ void deflectometry_image_capture::on_all_save_success()
 	m_save_success_num++;
 	if (m_save_success_num == m_image_ui.size())
 		emit all_save_success();
+}
+
+void deflectometry_image_capture::on_generate_fringe()
+{
+
+	// 初始化条纹周期
+	int fringe_max = ui.comboBox_3->currentText().toInt();
+	fringe_sequence.push_back(fringe_max);
+	fringe_sequence.push_back(fringe_max - 1);
+	fringe_sequence.push_back(fringe_max - int(sqrt(fringe_max)));
+
+	//初始化相移步数以及平均数
+	shift_step = ui.comboBox_4->currentText().toInt();
+	average_num = ui.comboBox_5->currentText().toInt();
+
+	for (int i = 0; i < fringe_sequence.size(); i++)
+	{
+		std::shared_ptr<FringeSequence> fringe(new FringeSequence);
+		fringe->init(fringe_sequence[i], fringe_width, fringe_height, shift_step, 1);
+		display_fringe.push_back(fringe);
+	}
+	for (int i = 0; i < fringe_sequence.size(); i++)
+	{
+		std::shared_ptr<FringeSequence> fringe(new FringeSequence);
+		fringe->init(fringe_sequence[i], fringe_width, fringe_height, shift_step, 0);
+		display_fringe.push_back(fringe);
+	}
 }

@@ -105,6 +105,7 @@
     <ClCompile Include="fringe.cpp" />
     <ClCompile Include="ImageShow.cpp" />
     <ClCompile Include="projectorThread.cpp" />
+    <ClCompile Include="saveThread.cpp" />
     <ClCompile Include="X64\DEBUG\MOC\MOC_HIGHGRAPHICSVIEW.CPP" />
     <QtUic Include="deflectometry_image_capture.ui" />
     <QtMoc Include="deflectometry_image_capture.h" />
@@ -115,6 +116,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AVT\ApiController.h" />
+    <QtMoc Include="saveThread.h" />
     <QtMoc Include="AVT\CameraObserver.h" />
     <ClInclude Include="AVT\ErrorCodeToMessage.h" />
     <QtMoc Include="AVT\FrameObserver.h" />
