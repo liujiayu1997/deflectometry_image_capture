@@ -130,6 +130,27 @@ void ImageShow::set_save_path(QString path_root, int current_experient_num)
         dir_path_root.mkdir(QString::number(current_experient_num));
 }
 
+VmbErrorType ImageShow::CopyToImageGray(VmbUchar_t* pInBuffer, VmbPixelFormat_t ePixelFormat, QImage& pOutImage)
+{
+    const int           nHeight = m_ApiController.GetHeight();
+    const int           nWidth = m_ApiController.GetWidth();
+
+    VmbImage            SourceImage, DestImage;
+    VmbError_t          Result;
+    SourceImage.Size = sizeof(SourceImage);
+    DestImage.Size = sizeof(DestImage);
+
+    Result = VmbSetImageInfoFromPixelFormat(ePixelFormat, nWidth, nHeight, &SourceImage);
+    Result = VmbSetImageInfoFromPixelFormat(ePixelFormat, nWidth, nHeight, &DestImage);
+
+    SourceImage.Data = pInBuffer;
+    DestImage.Data = pOutImage.bits();
+
+    VmbImageTransform(&SourceImage, &DestImage, NULL, 0);
+    return static_cast<VmbErrorType>(Result);
+
+}
+
 void ImageShow::close_camera()
 {
     VmbErrorType err = m_ApiController.StopContinuousImageAcquisition();
@@ -167,25 +188,30 @@ void ImageShow::OnFrameReady(int status)
                 if (!m_image.isNull())
                 {
                     // 当想使用RGB图片时选择这句
-                    //CopyToImage(pBuffer, ePixelFormat, m_image);
+                    //CopyToImageGray(pBuffer, ePixelFormat, m_image);
                     // Display it
                     m_image = QImage(pBuffer, m_ApiController.GetWidth(),
-                        m_ApiController.GetHeight(),
-                        QImage::Format_Grayscale8);
+                          m_ApiController.GetHeight(),
+                          QImage::Format_Grayscale8);
+
                     ui.graphicsView->setImage(m_image);
                     //m_save_thread->m_image = m_image.copy();
-                    m_save_thread->m_image = m_image;
+                    m_save_thread->m_image = m_image.copy();
                     emit save_image_data();
+                    //free(pBuffer);
                 }
             }
         }
 
         // And queue it to continue streaming
         m_ApiController.QueueFrame(pFrame);
+        //free(pBuffer);
         qDebug() << "Main thread :" << QThread::currentThread();
     }
     m_mutex.unlock();
 }
+
+
 
 void ImageShow::start_save_image(int fringe_num, int fringe_step, int average_num, bool vertical)
 {

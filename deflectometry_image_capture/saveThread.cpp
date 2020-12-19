@@ -7,7 +7,7 @@ saveThread::saveThread()
 	m_fringe_step = 0;
 	m_average_num = 0;
 	m_is_vertical = false;
-	m_frame_throw = 2;
+	m_frame_throw = 3;
 }
 
 saveThread::~saveThread()

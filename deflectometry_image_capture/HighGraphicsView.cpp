@@ -41,6 +41,7 @@ void HighGraphicsView::setImage(QImage image)
 	current_width = this->width();
 	current_height = int(double(im_height) / double(im_width) * double(current_width));
 	const QSize s = this->size();
+	scene->clear();
 	scene->addPixmap(QPixmap::fromImage(this->image.scaled(s, Qt::KeepAspectRatio)));
 	this->setScene(scene);
 	qDebug() << "Graphics thread" << QThread::currentThread();

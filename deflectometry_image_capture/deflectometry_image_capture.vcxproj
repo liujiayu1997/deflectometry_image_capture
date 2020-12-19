@@ -43,14 +43,14 @@
     <Import Project="$(QtMsBuild)\qt_defaults.props" />
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <IncludePath>C:\Program Files\Daheng Imaging\GalaxySDK\Samples\C++ SDK\inc;E:\library\opencv\build\include;E:\library\opencv\build\include\opencv2;C:\Users\Jiayu_Liu\source\repos\deflectometry_image_capture\deflectometry_image_capture;C:\Qt\Qt5.12.9\5.12.9\msvc2017_64\include;C:\Users\Jiayu_Liu\source\repos\deflectometry_image_capture\deflectometry_image_capture\AVT;C:\Program Files\Allied Vision\Vimba_4.0;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Program Files\Daheng Imaging\GalaxySDK\Samples\C++ SDK\lib\x64;E:\library\opencv\build\x64\vc15\lib;C:\Program Files\Allied Vision\Vimba_4.0\VimbaCPP\Lib\Win64;C:\Program Files\Allied Vision\Vimba_4.0\VimbaImageTransform\Lib\Win64;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Program Files\Daheng Imaging\GalaxySDK\Samples\C++ SDK\inc;E:\library\opencv\build\include;E:\library\opencv\build\include\opencv2;C:\Users\Jiayu_Liu\source\repos\deflectometry_image_capture\deflectometry_image_capture;C:\Qt\Qt5.12.9\5.12.9\msvc2017_64\include;C:\Users\Jiayu_Liu\source\repos\deflectometry_image_capture\deflectometry_image_capture\AVT;C:\Program Files\Allied Vision\Vimba_4.0;E:\library\SFML-2.5.1\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files\Daheng Imaging\GalaxySDK\Samples\C++ SDK\lib\x64;E:\library\opencv\build\x64\vc15\lib;C:\Program Files\Allied Vision\Vimba_4.0\VimbaCPP\Lib\Win64;C:\Program Files\Allied Vision\Vimba_4.0\VimbaImageTransform\Lib\Win64;E:\library\SFML-2.5.1\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Link>
-      <AdditionalDependencies>GxIAPICPPEx.lib;opencv_world440d.lib;VimbaCPP.lib;VimbaImageTransform.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>GxIAPICPPEx.lib;opencv_world440d.lib;VimbaCPP.lib;VimbaImageTransform.lib;sfml-graphics-d.lib;flac.lib;freetype.lib;ogg.lib;openal32.lib;sfml-audio-d.lib;sfml-main-d.lib;sfml-network-d.lib;sfml-system-d.lib;sfml-window-d.lib;vorbis.lib;vorbisenc.lib;vorbisfile.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <ClCompile>
       <BrowseInformation>true</BrowseInformation>

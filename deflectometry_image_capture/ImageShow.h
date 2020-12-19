@@ -60,6 +60,7 @@ public:
 	VmbErrorType CopyToImage(VmbUchar_t* pInBuffer, VmbPixelFormat_t ePixelFormat, QImage& pOutImage, const float* Matrix = NULL);
 	void set_save_path(QString path_root, int current_experient_num);
 
+	VmbErrorType CopyToImageGray(VmbUchar_t* pInBuffer, VmbPixelFormat_t ePixelFormat, QImage& pOutImage);
 public slots:
 	// Í¼Æ¬ÏÔÊ¾²Ûº¯Êý
 	void show_picture();
